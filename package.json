@@ -1,0 +1,25 @@
+{
+  "name": "commandline-employee-database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoffeeEyes28/CommandLine-Employee-Database.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoffeeEyes28/CommandLine-Employee-Database/issues"
+  },
+  "homepage": "https://github.com/CoffeeEyes28/CommandLine-Employee-Database#readme",
+  "dependencies": {
+    "inquirer": "^9.1.1",
+    "mysql2": "^2.3.3"
+  }
+}
