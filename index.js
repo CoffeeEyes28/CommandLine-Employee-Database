@@ -1,14 +1,17 @@
 const inquier = require('inquirer')
 const mysql = require('mysql2')
-const db = require('./db')
+require('dotenv').config();
+// const db = require('./db')
 
 
 const connection = mysql.createConnection(
     {
-        host: 'localhost',
-        user: 'root',
-        password: 'password',
+        host: process.env.HOST,
+        user: process.env.USER,
+        password: process.env.PASSWORD,
         database: ''
     },
     console.log('connected to _db.')
 )
+
+console.log(process.env.PASSWORD)
