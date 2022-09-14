@@ -14,4 +14,5 @@ const connection = mysql.createConnection(
     console.log('connected to _db.')
 )
 
+
 console.log(process.env.PASSWORD)
