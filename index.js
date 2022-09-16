@@ -1,7 +1,7 @@
 const inquier = require('inquirer')
 const mysql = require('mysql2')
 require('dotenv').config();
-// const db = require('./db')
+
 
 
 const connection = mysql.createConnection(
@@ -9,7 +9,7 @@ const connection = mysql.createConnection(
         host: process.env.HOST,
         user: process.env.USER,
         password: process.env.PASSWORD,
-        database: ''
+        database: process.env.DATABASE
     },
     console.log('connected to _db.')
 )
@@ -53,5 +53,37 @@ function mainMenu(){
         console.log(err);
     })
 }
+
+function viewAllEmployees(){
+    connection.query('SELECT * FROM employee', function (err, result){
+     if (err){
+        console.log(err);
+     }
+     console.table(result);
+     mainMenu();
+});
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 mainMenu();
