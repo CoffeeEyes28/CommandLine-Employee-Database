@@ -60,7 +60,7 @@ function mainMenu(){
 }
 
 function viewAllEmployees(){
-    connection.query('SELECT * FROM employee', function (err, result){
+    connection.query('SELECT * FROM employee JOIN role ON employee.role_id = role.id', function (err, result){
      if (err){
         console.log(err);
      }
@@ -128,6 +128,24 @@ function viewAllDepartments(){
    
 }
 
+function updateRole(){
+    inquier
+    .prompt([
+        {
+           type: 'input',
+           name: 'employee',
+           message: 'What is the id of the employee you wish to update?', 
+        },
+        {
+            type: 'input',
+            name: 'role',
+            message: 'What is the id of the new role you wish to assign this employee',
+        },
+    ])
+    .then((data) => {
+        console.log(data)
+    })
+};
 
 
 
