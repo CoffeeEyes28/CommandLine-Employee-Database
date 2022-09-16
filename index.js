@@ -62,8 +62,7 @@ function mainMenu(){
 function viewAllEmployees(){
     connection.query(`SELECT 
                      employee.id, 
-                    employee.first_name, 
-                    employee.last_name, 
+                     CONCAT (employee.first_name, " ", employee.last_name) AS name, 
                      role.title, 
                     role.salary,
                     CONCAT (manager.first_name, " ", manager.last_name) AS manager,
@@ -82,25 +81,8 @@ function viewAllEmployees(){
 
 }
 
-function viewAllRoles(){
-    connection.query('SELECT role.id, role.title, role.salary, department.name AS department FROM role JOIN department ON role.department_id = department.id', function (err,result){
-        if(err){
-            console.log(err)
-        }
-        console.table(result);
-        mainMenu();
-    })
-}
 
-function viewAllDepartments(){
-    connection.query('SELECT * FROM department', function (err,result){
-        if (err){
-            console.log(err)
-        }
-        console.table(result);
-        mainMenu();
-    })
-}
+
 
 
  function addEmployee() {
@@ -164,6 +146,17 @@ function updateRole(){
 };
 
 
+function viewAllRoles(){
+    connection.query('SELECT role.id, role.title, role.salary, department.name AS department FROM role JOIN department ON role.department_id = department.id', function (err,result){
+        if(err){
+            console.log(err)
+        }
+        console.table(result);
+        mainMenu();
+    })
+}
+
+
 function addRole(){
     inquier
     .prompt([
@@ -189,6 +182,17 @@ function addRole(){
             viewAllRoles();
             mainMenu();
         })
+    })
+}
+
+
+function viewAllDepartments(){
+    connection.query('SELECT * FROM department', function (err,result){
+        if (err){
+            console.log(err)
+        }
+        console.table(result);
+        mainMenu();
     })
 }
 
