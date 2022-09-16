@@ -71,7 +71,7 @@ function viewAllEmployees(){
                      FROM employee 
                      JOIN role ON employee.role_id = role.id
                      JOIN department ON role.department_id = department.id
-                     JOIN employee manager ON employee.manager_id = manager.id`
+                     LEFT JOIN employee manager ON employee.manager_id = manager.id`
                      , function (err, result){
      if (err){
         console.log(err);
