@@ -119,11 +119,13 @@ function viewAllDepartments(){
     },
    ])
    .then((data) => {
-    console.log(data)
+    connection.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)', [data.firstName, data.lastName, data.role, data.manager], function (err, result){
+        if (err) throw err;
+        viewAllEmployees();
+        mainMenu();
+    })
    })
-   .catch((err) => {
-    console.log(err)
-   })
+   
 }
 
 
