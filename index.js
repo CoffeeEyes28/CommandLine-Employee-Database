@@ -60,18 +60,30 @@ function mainMenu(){
 }
 
 function viewAllEmployees(){
-    connection.query('SELECT * FROM employee JOIN role ON employee.role_id = role.id', function (err, result){
+    connection.query(`SELECT 
+                     employee.id, 
+                    employee.first_name, 
+                    employee.last_name, 
+                     role.title, 
+                    role.salary,
+                    CONCAT (manager.first_name, " ", manager.last_name) AS manager,
+                     department.name AS department 
+                     FROM employee 
+                     JOIN role ON employee.role_id = role.id
+                     JOIN department ON role.department_id = department.id
+                     JOIN employee manager ON employee.manager_id = manager.id`
+                     , function (err, result){
      if (err){
         console.log(err);
      }
      console.table(result);
      mainMenu();
-});
+})
 
 }
 
 function viewAllRoles(){
-    connection.query('SELECT * FROM role', function (err,result){
+    connection.query('SELECT role.id, role.title, role.salary, department.name AS department FROM role JOIN department ON role.department_id = department.id', function (err,result){
         if(err){
             console.log(err)
         }
@@ -143,7 +155,11 @@ function updateRole(){
         },
     ])
     .then((data) => {
-        console.log(data)
+        connection.query('UPDATE employee SET role_id = ? WHERE id = ?', function (err,result){
+            if (err) throw err;
+            viewAllEmployees();
+            mainMenu();
+        })
     })
 };
 
