@@ -12,7 +12,7 @@ const connection = mysql.createConnection(
         database: process.env.DATABASE
     },
     console.log('connected to _db.')
-).promise();
+)
 
 
 
@@ -70,12 +70,30 @@ function viewAllEmployees(){
 
 }
 
+function viewAllRoles(){
+    connection.query('SELECT * FROM role', function (err,result){
+        if(err){
+            console.log(err)
+        }
+        console.table(result);
+        mainMenu();
+    })
+}
 
-const addEmployee = async() => {
-const roles = await connection.query('SELECT * FROM role');
+function viewAllDepartments(){
+    connection.query('SELECT * FROM department', function (err,result){
+        if (err){
+            console.log(err)
+        }
+        console.table(result);
+        mainMenu();
+    })
+}
 
 
-const newEmployee = await inquier
+ function addEmployee() {
+
+ inquier
    .prompt([
     
     {
