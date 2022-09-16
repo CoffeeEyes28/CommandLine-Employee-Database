@@ -193,7 +193,23 @@ function addRole(){
 }
 
 
-
+function addDepartment(){
+    inquier
+    .prompt([
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is the name of your new department?'
+        },
+    ])
+    .then((data) => {
+        connection.query('INSERT INTO department (name) VALUES (?)', [data.name], function(err,result){
+            if (err) throw err;
+            viewAllDepartments();
+            mainMenu();
+        })
+    })
+}
 
     
 
