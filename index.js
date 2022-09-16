@@ -12,7 +12,9 @@ const connection = mysql.createConnection(
         database: process.env.DATABASE
     },
     console.log('connected to _db.')
-)
+).promise();
+
+
 
 function mainMenu(){
     inquier
@@ -21,7 +23,7 @@ function mainMenu(){
             type: 'list',
             name: 'answer',
             message: 'What would you like to do?',
-            choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Deparments', 'Add Department']
+            choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Deparments', 'Add Department', 'Exit']
         },
     ])
     .then(({answer}) => {
@@ -46,7 +48,10 @@ function mainMenu(){
                 break;
             case 'Add Department':
                 addDepartment();
-                break;                       
+                break;  
+            case 'Exit':
+                exit();
+                break;                         
         }
     })
     .catch((err) => {
@@ -66,6 +71,49 @@ function viewAllEmployees(){
 }
 
 
+const addEmployee = async() => {
+const roles = await connection.query('SELECT * FROM role');
+
+
+const newEmployee = await inquier
+   .prompt([
+    
+    {
+        type: 'input',
+        name: 'firstName',
+        message: 'What is your employees first name?'
+    },
+    {
+        type: 'input',
+        name: 'lastName',
+        message: 'What is your employees last name?'
+    },
+    {
+       type: 'input',
+       name: 'role',
+       message: 'What is your employess role id?',
+     
+    },
+    {
+        type: 'input',
+        name: 'manager',
+        message: 'what is your employees manager id?'
+    },
+   ])
+   .then((data) => {
+    console.log(data)
+   })
+   .catch((err) => {
+    console.log(err)
+   })
+}
+
+
+
+
+
+
+    
 
 
 
@@ -75,15 +123,9 @@ function viewAllEmployees(){
 
 
 
-
-
-
-
-
-
-
-
-
-
+function exit(){
+    console.log('Goodbye!')
+    process.exit()
+}
 
 mainMenu();
