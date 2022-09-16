@@ -164,6 +164,34 @@ function updateRole(){
 };
 
 
+function addRole(){
+    inquier
+    .prompt([
+        {
+            type: 'input',
+            name: 'title',
+            message: 'What is the title of your new role?'
+        },
+        {
+            type: 'input',
+            name: 'salary',
+            message: 'What is this roles annual salary?'
+        },
+        {
+            type: 'input',
+            name:'deptId',
+            message: 'What is this roles department id?'
+        }
+    ])
+    .then((data) => {
+        connection.query('INSERT INTO role (title, salary, department_id) VALUES (?,?,?)', [data.title, data.salary, data.deptId], function(err,result){
+            if (err) throw err;
+            viewAllRoles();
+            mainMenu();
+        })
+    })
+}
+
 
 
 
