@@ -14,5 +14,44 @@ const connection = mysql.createConnection(
     console.log('connected to _db.')
 )
 
+function mainMenu(){
+    inquier
+    .prompt([
+        {
+            type: 'list',
+            name: 'answer',
+            message: 'What would you like to do?',
+            choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Deparments', 'Add Department']
+        },
+    ])
+    .then(({answer}) => {
+        switch(answer) {
+            case 'View All Employees':
+                viewAllEmployees();
+                break;
+            case 'Add Employee':
+                addEmployee();
+                break;
+            case 'Update Employee Role':
+                    updateRole();
+                break;
+            case 'View All Roles':
+                viewAllRoles();
+                break;
+            case 'Add Role':
+                addRole();
+                break;
+            case 'View All Deparments':
+                viewAllDepartments();
+                break;
+            case 'Add Department':
+                addDepartment();
+                break;                       
+        }
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+}
 
-console.log(process.env.PASSWORD)
+mainMenu();
