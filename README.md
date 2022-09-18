@@ -54,6 +54,8 @@ Please run the following command to install required dependencies
 # Usage 
 The following video will demonstrate the programs functionality 
 <br>
+[employee-database walkthrough.webm](https://user-images.githubusercontent.com/106839365/190922201-17485314-d76e-45d0-964c-af536e02d402.webm)
+
 
 # Questions 
 Any questions regarding this repository please open an issue, or reach out to me directly via <a href="https://github.com/CoffeeEyes28">GitHub</a> or by email @ <a href="mailto:litm47@gmail.com">litm47@gmail.com</a>
