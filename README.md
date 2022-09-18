@@ -53,7 +53,6 @@ Please run the following command to install required dependencies
 
 # Usage 
 The following video will demonstrate the programs functionality 
-<br>
 [employee-database walkthrough.webm](https://user-images.githubusercontent.com/106839365/190922201-17485314-d76e-45d0-964c-af536e02d402.webm)
 
 
