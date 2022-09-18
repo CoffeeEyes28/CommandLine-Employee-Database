@@ -14,7 +14,17 @@ I WANT to be able to view and manage the departments, roles, and employees in my
 <br>
 SO THAT I can organize and plan my business
 
-
+# Table of Contents
+- [CommandLine-Employee-Database](#commandline-employee-database)
+- [MIT](#mit)
+  - [MIT License](#mit-license)
+- [User Story](#user-story)
+- [Table of Contents](#table-of-contents)
+- [Description](#description)
+- [Technolgies Used](#technolgies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Questions](#questions)
 
 
 
@@ -24,7 +34,7 @@ SO THAT I can organize and plan my business
 
 
 # Description
-Command line based program that allows users to view and add employees, roles and departments inside of a company database
+Command line based program that allows users to view and add employees, roles, and departments inside of a company database.
 
 
 
@@ -39,7 +49,11 @@ Command line based program that allows users to view and add employees, roles an
 This program requires Node.js, Inquirer and MySql2
 <br>
 Please run the following command to install required dependencies 
-<pre><code> npm install </code>
+<pre><code> npm install </code> </pre>
 
 # Usage 
-The following video will 
+The following video will demonstrate the programs functionality 
+<br>
+
+# Questions 
+Any questions regarding this repository please open an issue, or reach out to me directly via <a href="https://github.com/CoffeeEyes28">GitHub</a> or by email @ <a href="mailto:litm47@gmail.com">litm47@gmail.com</a>
