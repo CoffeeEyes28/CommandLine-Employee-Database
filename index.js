@@ -2,6 +2,7 @@ const inquier = require("inquirer");
 const mysql = require("mysql2");
 require("dotenv").config();
 
+// creates connection to database
 const connection = mysql.createConnection(
   {
     host: process.env.HOST,
@@ -12,6 +13,7 @@ const connection = mysql.createConnection(
   console.log("Welcome!")
 );
 
+// Lists main set of choices for users, activates their respective function on selected choice
 function mainMenu() {
   inquier
     .prompt([
@@ -64,6 +66,7 @@ function mainMenu() {
     });
 }
 
+// Console  logs a table of all current employees
 function viewAllEmployees() {
   connection.query(
     `SELECT 
@@ -87,6 +90,7 @@ function viewAllEmployees() {
   );
 }
 
+// Allows users to add a employee to database
 function addEmployee() {
   inquier
     .prompt([
@@ -139,6 +143,7 @@ function addEmployee() {
     });
 }
 
+// allows users to update a current employees role based of their id number
 function updateRole() {
   inquier
     .prompt([
@@ -183,6 +188,7 @@ function updateRole() {
     });
 }
 
+// console logs a table of all current roles
 function viewAllRoles() {
   connection.query(
     "SELECT role.id, role.title, role.salary, department.name AS department FROM role JOIN department ON role.department_id = department.id",
@@ -196,6 +202,7 @@ function viewAllRoles() {
   );
 }
 
+// creates a new role and allows user to assign the role to a specific department 
 function addRole() {
   inquier
     .prompt([
@@ -238,6 +245,7 @@ function addRole() {
     });
 }
 
+// console logs a table of all current departments 
 function viewAllDepartments() {
   connection.query("SELECT * FROM department", function (err, result) {
     if (err) {
@@ -248,6 +256,7 @@ function viewAllDepartments() {
   });
 }
 
+// allows users to create a new department 
 function addDepartment() {
   inquier
     .prompt([
@@ -274,6 +283,7 @@ function addDepartment() {
     });
 }
 
+// ends the program
 function exit() {
   console.log("Goodbye!");
   process.exit();
